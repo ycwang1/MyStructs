@@ -16,9 +16,10 @@
 		</br>
 		<input type="submit" value="submit">
 	</form> -->
-	
+	<s:head/>
 	<s:form action="listProduct">
-		<s:textfield name="product.name" label="姓名"></s:textfield>
+		<s:textfield name="product.name" label="姓名" ></s:textfield>
+		<%-- <input type="text" value="${param.name}"> --%>
 		<s:submit value="Submit"></s:submit>
 	</s:form>
 </body>

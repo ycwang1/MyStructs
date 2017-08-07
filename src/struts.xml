@@ -6,7 +6,9 @@
 <struts>
   <constant name="struts.multipart.maxSize" value="10240000"/>
   <package name="basicstruts" extends="struts-default">
- 
+ <interceptors>
+ 	<interceptor name="dateIntercepter" class="com.java.filter.DateInterceptor"/>
+ </interceptors>
   <action name="index">
     <result>index.jsp</result>
   </action>    
@@ -14,18 +16,25 @@
     <result name="show">showTime.jsp</result>
   </action> 
   
- <action name="showProduct" class="com.java.action.ProductAction" method="show">
+<!--  <action name="showProduct" class="com.java.action.ProductAction" method="show">
  	<result name="show">show.jsp</result>
  </action>
  <action name="addProduct" class="com.java.action.ProductAction" method="addProduct">
  	<result name="show">show.jsp</result>
- </action>
+ </action> -->
   <action name="upload" class="com.java.action.UploadAction" method="upload">
  	<result name="success">success.jsp</result>
  </action>
-   <action name="listProduct" class="com.java.action.ProductAction" method="list">
+   <action name="*Product" class="com.java.action.ProductAction" method="{1}">
+   <interceptor-ref name="dateIntercepter"></interceptor-ref>
+   <interceptor-ref name="defaultStack"></interceptor-ref>
  	<result name="list">list.jsp</result>
+ 		<result name="input">addProduct.jsp</result>
+ 	<result name="show">show.jsp</result>
  </action>
+ <action name="addPageProduct" class="com.java.action.ProductAction" method="addPage">
+	<result name="addPage" type="redirect">addProduct.jsp?name=${name}</result>
+</action>
 </package>
  
 </struts>

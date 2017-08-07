@@ -41,7 +41,33 @@ td {
 			</tr>
 		</s:iterator>
 	</table> --%>
-	<s:checkboxlist value="selectedProducts" name="product.id"
+	<%-- <s:checkboxlist value="selectedProducts" name="product.id"
     list="products" listValue="name" listKey="id" />
+    <br>
+    <s:radio list="products" listValue="name" listKey="id"
+    name="product.id" value="2"></s:radio>
+    <br>
+    <s:select list="products" listValue="name" listKey="id" name="product.id"
+    multiple="true" size="1" value="selectedProducts" theme="simple"></s:select> --%>
+    ${date}
+    <table border="1" cellspacing="0">
+    	<tr>
+    		<td>id</td>
+    		<td>name</td>
+    		<td>products</td>
+    	</tr>
+    	<s:iterator value="categories" var="c">
+    		<tr>
+    			<td>${c.id}</td>
+    			<td>${c.name}</td>
+    			<td>
+    				<s:iterator value="#c.products" var="p">
+    					${p.name}<br>
+    				</s:iterator>
+    			</td>
+    		</tr>
+    	</s:iterator>
+    </table>
+    <s:debug/>
 </body>
 </html>
